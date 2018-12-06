@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./style.css">
+    <script type="text/javascript" src="./mainData.json"></script>
+  </head>
+  <body onload="loadJSON('./mainData.json',function(data) { console.log(data); },function(xhr) { console.error(xhr); })">
+    <div id="page1">
+    <div id="map" onclick="changeFoc()"></div>
+    <div id="srh">
+        <input type="text" name="state" placeholder="Enter State Name Like Delhi ..." id="srhState" oninput="checkStateName()">
+        <div id="myDropdown" class="srh dropdown-content"></div>
+    </div>
+    <div id="mySidepanel" class="sidepanel">
+        <a href="javascript:void(0)" class="closebtn noSelect" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn noSelect" onclick="closeBottomNav()">&times;</a>
+        <div class="overlay-content">
+          <div>
+            <h5 class="less-det-head">Population</h5>
+            <img class="less-details" src="./pop.png">
+            <h3 class="less-det" id="less-pop">Population</h3>
+          </div>
+          <div>
+            <h5 class="less-det-head">Sex-Ratio</h5>
+            <img class="less-details" src="./gen.png">
+             <h3 class="less-det" id="less-sex">Population</h3>
+          </div>
+          <div>
+            <h5 class="less-det-head">Literacy</h5>
+            <img class="less-details" src="./edu.png">
+             <h3 class="less-det" id="less-lit">Population</h3>
+          </div>
+        </div>
+        <button class="overlay-button" onclick="showNewPage()">Show More</button>
+      </div>
+      <button class="openbtn noSelect" onclick="openNav()">☰</button> 
+    </div>
+
+    <div id="page2">
+      <img id="state-image" src="./delhi.jpg"/>
+      <ul class="flex-container wrap">
+        <li class="flex-item">1</li>
+        <li class="flex-item">2</li>
+        <li class="flex-item">3</li>
+        <li class="flex-item">4</li>
+        <li class="flex-item">5</li>
+        <li class="flex-item">6</li>
+      </ul>      
+    </div>
+    <script src="./app.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt4kxNMYnWfXUo4Hxg4ynhYANMAHVhAW8&callback=initMap" async defer>
+    </script>
+  </body>
+</html>
+
