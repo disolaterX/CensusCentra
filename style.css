@@ -217,7 +217,7 @@ html, body {
 
 #page2{
     z-index:-1;
-    position: fixed;
+    position: static;
     height: 100%;
     margin: 0;
     padding: 0;
