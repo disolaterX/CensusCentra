@@ -480,7 +480,8 @@ function checkStateName(){
 function getSelectedStateName(){
     openBottomNav()
     document.getElementById("myDropdown").innerHTML = '';
-    document.getElementById("srhState").value = this.text;
+    secondPageStateName = this.text
+    document.getElementById("srhState").value = secondPageStateName;
 
     for(var i in myObj)
     {
@@ -502,6 +503,7 @@ function showDropDown(){
     document.getElementById("myDropdown").classList.add("show");
 }
 
+
 document.getElementById("srhState").addEventListener('keyup', function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {
@@ -516,7 +518,7 @@ document.getElementById("srhState").addEventListener('keyup', function(event) {
                 document.getElementById("srhState").value = allStateListed[0].text
                 document.getElementById("myDropdown").classList.remove("show");
                 for(var i in myObj){
-                    if(myObj[i].State == this.text){
+                    if(myObj[i].State == allStateListed[0].text){
                       secondPageStateName = myObj[i].State
                         document.getElementById("less-pop").innerHTML=myObj[i].Population;
                         document.getElementById("less-sex").innerText=myObj[i].Sex_Ratio+"/1000";
@@ -545,6 +547,8 @@ function showNewPage(){
       }
     }
 }
+
+
 
 // window.onscroll = function() {myFunction()};
 
