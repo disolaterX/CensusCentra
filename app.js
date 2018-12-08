@@ -2,6 +2,7 @@ var map
 var stateList
 var selectedNewState = [];
 var allStateListed = [];
+var secondPageStateName 
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -480,10 +481,11 @@ function getSelectedStateName(){
     openBottomNav()
     document.getElementById("myDropdown").innerHTML = '';
     document.getElementById("srhState").value = this.text;
+
     for(var i in myObj)
     {
         if(myObj[i].State == this.text){
-          console.log(myObj[i].Population);
+          secondPageStateName = myObj[i].State
           document.getElementById("less-pop").innerHTML=myObj[i].Population;
           document.getElementById("less-sex").innerText=myObj[i].Sex_Ratio+"/1000";
           document.getElementById("less-lit").textContent=myObj[i].Literacy+" %";
@@ -515,7 +517,7 @@ document.getElementById("srhState").addEventListener('keyup', function(event) {
                 document.getElementById("myDropdown").classList.remove("show");
                 for(var i in myObj){
                     if(myObj[i].State == this.text){
-                        console.log(myObj[i].Population);
+                      secondPageStateName = myObj[i].State
                         document.getElementById("less-pop").innerHTML=myObj[i].Population;
                         document.getElementById("less-sex").innerText=myObj[i].Sex_Ratio+"/1000";
                         document.getElementById("less-lit").textContent=myObj[i].Literacy+" %";
@@ -529,6 +531,34 @@ document.getElementById("srhState").addEventListener('keyup', function(event) {
 function showNewPage(){
   document.getElementById("page1").style.display = 'none';
   document.getElementById("page2").style.display = 'block';
+
+  for(var i in myObj){
+    if(myObj[i].State == secondPageStateName){
+        console.log(myObj[i].Population);
+        document.getElementById("secondPageStateName").innerHTML= myObj[i].State
+        document.getElementById("more-pop").innerHTML=myObj[i].Population;
+        document.getElementById("more-inc").innerHTML=myObj[i].Increase;
+        document.getElementById("more-area").innerHTML=myObj[i].Area+" km²";
+        document.getElementById("more-den").innerHTML=myObj[i].Density;
+        document.getElementById("more-sex").innerText=myObj[i].Sex_Ratio+" / 1000";
+        document.getElementById("more-lit").textContent=myObj[i].Literacy+" %";
+      }
+    }
 }
+
+// window.onscroll = function() {myFunction()};
+
+// var navbar = document.getElementById("state-image");
+// var sticky = navbar.offsetTop;
+
+// function myFunction() {
+//   if (window.pageYOffset >= sticky) {
+//     navbar.classList.add("sticky")
+//     navbar.style.height="15%";
+//   } else {
+//     navbar.classList.remove("sticky");
+//     navbar.style.height="35%";
+//   }
+// }
     
 

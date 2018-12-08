@@ -222,6 +222,7 @@ html, body {
     margin: 0;
     padding: 0;
     display: none;
+    background-image: linear-gradient(to right top, #aaffc0, #a1ffd1, #9effe1, #9ffeed, #a6fcf7, #abfdf5, #b0fdf3, #b5fef1, #beffe3, #cdffd4, #e1ffc5, #f9ffb9);
 }
 
 #page1{
@@ -233,10 +234,21 @@ html, body {
     
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
 #state-image{
     position: sticky;
     width: 100%;
     max-height: 35%;
+}
+
+#test{
+    width: 300px;
+    margin: auto;
 }
 
 .flex-container {
@@ -244,7 +256,6 @@ html, body {
     margin: 0;
     list-style: none;
     justify-content: center;
-    border: 1px solid silver;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -260,21 +271,52 @@ html, body {
   }  
 
   .wrap li {
-    background: gold;
   }
   
   .flex-item {
-    background: tomato;
     padding: 5px;
-    width: 100px;
-    height: 100px;
-    margin: 10px;
+    width: 90px;
+    height: auto;
+    margin: 25px;
     
-    line-height: 100px;
     color: white;
     font-weight: bold;
     font-size: 2em;
     text-align: center;
   }
+
+  .more-details {
+
+    height: 50px;
+    width: 50px;
+    border-style: solid;
+    border-width: 1px;
+    background: #ffffff;
+    padding: 7px;
+    border-radius: 5px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+  }
+
+  .more-det-head {
+      color: black;
+    margin: 0 0 5px 0;
+    font-size: 14px;
+  }
+
+  .more-det {
+      color: black;
+      text-shadow: 0 5px 7px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    margin: 0;
+    font-size: 17px;
+  }
+
+  #secondPageStateName {
+    text-align: center;
+    padding: 20px 0 0 0;
+    font-size: 45px
+  }
+
+  
 
 
