@@ -506,6 +506,11 @@ function showDropDown(){
 
 document.getElementById("srhState").addEventListener('keyup', function(event) {
     event.preventDefault();
+    var x = event.which || event.keyCode
+    console.log(x)
+    if(x==8){
+      alert(Backspacep)
+    }
     if (event.keyCode === 13) {
         if(allStateListed.length<2){   
             var testObj1 = allStateListed[0].text.toUpperCase()
@@ -529,6 +534,12 @@ document.getElementById("srhState").addEventListener('keyup', function(event) {
                 }
               }
 });
+
+document.body().addEventListener('keyup', function(event) {
+  
+  alert("key")
+})
+
 
 function showNewPage(){
   document.getElementById("page1").style.display = 'none';
