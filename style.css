@@ -218,9 +218,9 @@ html, body {
 #page2{
     z-index:-1;
     position: static;
-    height: 100%;
+    height: auto;
     margin: 0;
-    padding: 0;
+    padding: 0 0 31px 0;
     display: none;
     background-image: linear-gradient(to right top, #aaffc0, #a1ffd1, #9effe1, #9ffeed, #a6fcf7, #abfdf5, #b0fdf3, #b5fef1, #beffe3, #cdffd4, #e1ffc5, #f9ffb9);
 }
