@@ -193,6 +193,7 @@ function initMap() {
                 geocoder.geocode({ 'latLng': latlng }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {                                            
                         if (results[1]) {
+                          
                           for(var i in myObj)
     {
       if(results[1].formatted_address.includes(myObj[i].State))
@@ -246,12 +247,14 @@ function openNav() {
     document.getElementById("mySidepanel").style.width = "250px";
     document.getElementById("srhState").style.display = "none";
     document.getElementById("myDropdown").classList.remove("show");
+    document.getElementById("overlay").style.display = "block";
     closeBottomNav();
 }
 
 function closeNav() {
     document.getElementById("mySidepanel").style.width = "0";
     document.getElementById("srhState").style.display = "block";
+    document.getElementById("overlay").style.display = "none";
 }
 
 function openBottomNav() {
@@ -737,7 +740,9 @@ function showDropDown(){
 // function showPopUp(r){
 //   document.getElementById("popup").style.display="block"
 // }
-
+document.getElementById("overlay").addEventListener('click', function(event) {
+  closeNav()
+})
 
 document.getElementById("srhState").addEventListener('keyup', function(event) {
     event.preventDefault();

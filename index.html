@@ -10,6 +10,8 @@
   <body onload="loadJSON('./mainData.json',function(data) { console.log(data); },function(xhr) { console.error(xhr); })">
     
     <div id="page1">
+        <div id="overlay"></div>
+
     <div id="map" onclick="changeFoc()"></div>
     <div id="srh">
         <input type="text" name="state" placeholder="Enter State Name Like Delhi ..." id="srhState" oninput="checkStateName()">
@@ -17,35 +19,18 @@
     </div>
     <div id="mySidepanel" class="sidepanel">
         <a href="javascript:void(0)" class="closebtn noSelect" onclick="closeNav()">&times;</a>
-        <li>
-            <div class="user-view">
-              <div class="background">
-                <img src="./office.jpg">
-              </div>
-              <a href="#user">
-                <img class="circle" src="./yuna.jpg">
-              </a>
-              <a href="#name">
-                <span class="white-text name">John Doe</span>
-              </a>
-              <a href="#email">
-                <span class="white-text email">jdandturk@gmail.com</span>
-              </a>
-            </div>
-          </li>
-          <li>
-            <a href="#!">
-              <i class="material-icons">cloud</i>First Link With Icon</a>
-          </li>
-          <li>
-            <a href="#!">Second Link</a>
-          </li>
-          <li>
-            <div class="divider"></div>
-          </li>
-          <li>
-            <a class="subheader">Subheader</a>
-          </li>
+        <div id="profileBack">
+          <img id="user" src="./yuna.jpg">
+          <p>Kartik Yadav</p>
+          <p>kartikyadav@protonmail.com</p>
+        </div>
+        <ul>
+          <li>Step 1</li>
+          <li>Step 1</li>
+          <li>Step 1</li>
+          <li>Step 1</li>
+          <li>Step 1</li>
+
         </ul>
     </div>
 
