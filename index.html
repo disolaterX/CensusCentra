@@ -8,6 +8,7 @@
     <script type="text/javascript" src="./mainData.json"></script>
   </head>
   <body onload="loadJSON('./mainData.json',function(data) { console.log(data); },function(xhr) { console.error(xhr); })">
+    
     <div id="page1">
     <div id="map" onclick="changeFoc()"></div>
     <div id="srh">
@@ -16,10 +17,36 @@
     </div>
     <div id="mySidepanel" class="sidepanel">
         <a href="javascript:void(0)" class="closebtn noSelect" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <li>
+            <div class="user-view">
+              <div class="background">
+                <img src="./office.jpg">
+              </div>
+              <a href="#user">
+                <img class="circle" src="./yuna.jpg">
+              </a>
+              <a href="#name">
+                <span class="white-text name">John Doe</span>
+              </a>
+              <a href="#email">
+                <span class="white-text email">jdandturk@gmail.com</span>
+              </a>
+            </div>
+          </li>
+          <li>
+            <a href="#!">
+              <i class="material-icons">cloud</i>First Link With Icon</a>
+          </li>
+          <li>
+            <a href="#!">Second Link</a>
+          </li>
+          <li>
+            <div class="divider"></div>
+          </li>
+          <li>
+            <a class="subheader">Subheader</a>
+          </li>
+        </ul>
     </div>
 
     <div id="myNav" class="overlay">
@@ -52,43 +79,45 @@
       <div id="secondPageStateName">Delhi</div>
       <div id="test">
           <ul class="flex-container wrap">
-              <li class="flex-item">
+              <button class="flex-item" onclick="showPopUp('pop')">
                   <h5 class="more-det-head">Population</h5>
                   <img class="more-details" src="./pop.png">
                    <h3 class="more-det" id="more-pop">pop</h3>
-              </li>
-              <li class="flex-item">
+          </button>
+              <button class="flex-item">
                   <h5 class="more-det-head">Increase</h5>
                   <img class="more-details" src="./inc.png">
                    <h3 class="more-det" id="more-inc">inc</h3>
-              </li>
-              <li class="flex-item">
+              </button>
+              <button class="flex-item">
                   <h5 class="more-det-head">Area</h5>
                   <img class="more-details" src="./area.png">
                    <h3 class="more-det" id="more-area">area</h3>
-              </li>
-              <li class="flex-item">
+              </button>
+              <button class="flex-item">
                   <h5 class="more-det-head">Density</h5>
                   <img class="more-details" src="./den.png">
                    <h3 class="more-det" id="more-den">density</h3>
-              </li>
-              <li class="flex-item">
+              </button>
+              <button class="flex-item">
                   <h5 class="more-det-head">Sex-Ratio</h5>
                   <img class="more-details" src="./gen.png">
                    <h3 class="more-det" id="more-sex">sex</h3>
-              </li>
-              <li class="flex-item"> 
+              </button>
+              <button class="flex-item"> 
                 <h5 class="more-det-head">Literacy</h5>
                 <img class="more-details" src="./edu.png">
                  <h3 class="more-det" id="more-lit">literacy</h3>
-                </li>
+                </button>
             </ul> 
       </div>
            
     </div>
+
+    <div id="popup">
+    </div>
     <script src="./app.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt4kxNMYnWfXUo4Hxg4ynhYANMAHVhAW8&callback=initMap" async defer>
-    </script>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyDWBSpJBd2KaDdJlcyeNxyyDst2YFLz_BU&callback=initMap" async defer type="text/javascript"></script>
   </body>
 </html>
 

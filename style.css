@@ -65,8 +65,8 @@
     left: 0;
     background-color: #111;
     overflow-x: hidden;
+    width: 0;
     transition: 0.5s;
-    padding-top: 60px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
 }
@@ -270,12 +270,10 @@ html, body {
     flex-wrap: wrap;
   }  
 
-  .wrap li {
-  }
   
   .flex-item {
     padding: 5px;
-    width: 90px;
+    width: auto;
     height: auto;
     margin: 25px;
     
@@ -283,6 +281,8 @@ html, body {
     font-weight: bold;
     font-size: 2em;
     text-align: center;
+    background: none;
+border: none;
   }
 
   .more-details {
@@ -294,21 +294,21 @@ width: 65px;
     background: #ffffff;
     padding: 7px;
     border-radius: 5px;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.25), 0 5px 4px rgba(0, 0, 0, 0.22);
 
   }
 
   .more-det-head {
       color: black;
-    margin: 0 0 5px 0;
-    font-size: 15px;
+      font-family: 'Times New Roman', Times, serif;
+    margin: 0 0 8px 0;
+    font-size: 14px;
   }
 
   .more-det {
       color: black;
-      text-shadow: 0 5px 7px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     margin: 0;
-    font-size: 19px;
+    font-size: 15px;
   }
 
   #secondPageStateName {
@@ -316,6 +316,23 @@ width: 65px;
     padding: 20px 0 0 0;
     font-size: 45px
   }
+
+  #popup {
+    z-index: 1;
+display: none;
+position: absolute;
+background: wheat;
+border-radius: 10px;
+height: 35%;
+width: 75%;
+padding: 5px 5px;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+box-shadow: 0 0px 0px rgba(0, 0, 0, 0.25), 0 5px 4px rgba(0, 0, 0, 0.22);
+  }
+
+  
 
   
 

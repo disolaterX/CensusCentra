@@ -3,14 +3,184 @@ var stateList
 var selectedNewState = [];
 var allStateListed = [];
 var secondPageStateName 
+var geocoder;
+var markerCount = 0
+var marker
+
+var mapStyle = [
+  {
+    "stylers": [
+      {
+        "visibility": "simplified"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.country",
+    "stylers": [
+      {
+        "color": "#800080"
+      },
+      {
+        "saturation": -20
+      },
+      {
+        "visibility": "on"
+      },
+      {
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.country",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.locality",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.province",
+    "stylers": [
+      {
+        "saturation": 20
+      },
+      {
+        "lightness": 20
+      },
+      {
+        "visibility": "on"
+      },
+      {
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.province",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#A52A2A"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape",
+    "stylers": [
+      {
+        "saturation": 25
+      },
+      {
+        "lightness": 65
+      },
+      {
+        "visibility": "on"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "stylers": [
+      {
+        "visibility": "simplified"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "stylers": [
+      {
+        "visibility": "simplified"
+      }
+    ]
+  }
+]
+
 
 function initMap() {
+  geocoder = new google.maps.Geocoder();
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 23.5937, lng: 78.9629},
         zoom: 5,
         disableDefaultUI: true,
+        styles: mapStyle,
     });
+    google.maps.event.addListener(map,'click',function(e) {
+      if(markerCount!=0){
+        marker.setMap(null);
+      }
+      var latlng = new google.maps.LatLng(e.latLng.lat(), e.latLng.lng());
+                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {                                            
+                        if (results[1]) {
+                          for(var i in myObj)
+    {
+      if(results[1].formatted_address.includes(myObj[i].State))
+      {
+        map.setCenter(latlng)
+        console.log(myObj[i].State);
+        openBottomNav()
+        document.getElementById("srhState").value = myObj[i].State;
+        document.getElementById("less-pop").innerHTML=myObj[i].Population;
+          document.getElementById("less-sex").innerText=myObj[i].Sex_Ratio+"/1000";
+          document.getElementById("less-lit").textContent=myObj[i].Literacy+" %";
+          marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+        markerCount ++
+
+        
+      }
+      
+    }
+                                                }
+                    }
+                });
+  });
+  var infoWindow = new google.maps.InfoWindow();
+            var latlngbounds = new google.maps.LatLngBounds();
+            
 }
+
+function codeAddress() {
+  var address = document.getElementById('srhState').value + ", India";
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == 'OK') {
+      console.log(results[0].geometry.location)
+      map.setCenter(results[0].geometry.location);
+      marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+      markerCount ++
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+
+
 function openNav() {
     document.getElementById("mySidepanel").style.width = "250px";
     document.getElementById("srhState").style.display = "none";
@@ -58,16 +228,6 @@ function changeFoc(){
 // }
 
 myObj = [
-    {
-      "State": "India",
-      "Population": "1,210,854,977",
-      "Increase": "17.64%",
-      "Area": "3,287,240",
-      "Density": "382",
-      "Sex_Ratio": 940,
-      "Literacy": 74.04,
-      "Led Bulb Distributed": 307806940
-    },
     {
       "State": "Andaman and Nicobar Islands",
       "Population": "380,581",
@@ -478,10 +638,16 @@ function checkStateName(){
 }
 
 function getSelectedStateName(){
+  
     openBottomNav()
     document.getElementById("myDropdown").innerHTML = '';
     secondPageStateName = this.text
     document.getElementById("srhState").value = secondPageStateName;
+    if(markerCount!=0){
+      marker.setMap(null);
+    }
+    codeAddress()
+
 
     for(var i in myObj)
     {
@@ -504,10 +670,14 @@ function showDropDown(){
 }
 
 
+// function showPopUp(r){
+//   document.getElementById("popup").style.display="block"
+// }
+
+
 document.getElementById("srhState").addEventListener('keyup', function(event) {
     event.preventDefault();
     var x = event.which || event.keyCode
-    console.log(x)
     if(x==8){
       alert(Backspacep)
     }
@@ -522,6 +692,10 @@ document.getElementById("srhState").addEventListener('keyup', function(event) {
                 openBottomNav()
                 document.getElementById("srhState").value = allStateListed[0].text
                 document.getElementById("myDropdown").classList.remove("show");
+                if(markerCount!=0){
+                  marker.setMap(null);
+                }
+                codeAddress()
                 for(var i in myObj){
                     if(myObj[i].State == allStateListed[0].text){
                       secondPageStateName = myObj[i].State
@@ -535,18 +709,13 @@ document.getElementById("srhState").addEventListener('keyup', function(event) {
               }
 });
 
-document.body().addEventListener('keyup', function(event) {
-  
-  alert("key")
-})
-
 
 function showNewPage(){
   document.getElementById("page1").style.display = 'none';
   document.getElementById("page2").style.display = 'block';
 
   for(var i in myObj){
-    if(myObj[i].State == secondPageStateName){
+    if(myObj[i].State == secondPageStateName || myObj[i].State == document.getElementById("srhState").value  ){
         console.log(myObj[i].Population);
         document.getElementById("secondPageStateName").innerHTML= myObj[i].State
         document.getElementById("more-pop").innerHTML=myObj[i].Population;
@@ -561,19 +730,4 @@ function showNewPage(){
 
 
 
-// window.onscroll = function() {myFunction()};
-
-// var navbar = document.getElementById("state-image");
-// var sticky = navbar.offsetTop;
-
-// function myFunction() {
-//   if (window.pageYOffset >= sticky) {
-//     navbar.classList.add("sticky")
-//     navbar.style.height="15%";
-//   } else {
-//     navbar.classList.remove("sticky");
-//     navbar.style.height="35%";
-//   }
-// }
-    
 
