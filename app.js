@@ -16,25 +16,50 @@ var mapStyle = [
     ]
   },
   {
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
     "featureType": "administrative.country",
     "stylers": [
       {
-        "color": "#800080"
+        "color": "#FF6347"
       },
       {
-        "saturation": -20
+        "saturation": 100
       },
       {
         "visibility": "on"
       },
       {
-        "weight": 2
+        "weight": 1
       }
     ]
   },
   {
     "featureType": "administrative.country",
     "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
     "stylers": [
       {
         "visibility": "off"
@@ -50,13 +75,18 @@ var mapStyle = [
     ]
   },
   {
+    "featureType": "administrative.neighborhood",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
     "featureType": "administrative.province",
     "stylers": [
       {
-        "saturation": 20
-      },
-      {
-        "lightness": 20
+        "saturation": -90
       },
       {
         "visibility": "on"
@@ -76,6 +106,15 @@ var mapStyle = [
     ]
   },
   {
+    "featureType": "administrative.province",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
     "featureType": "landscape",
     "stylers": [
       {
@@ -83,6 +122,20 @@ var mapStyle = [
       },
       {
         "lightness": 65
+      },
+      {
+        "visibility": "on"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.natural.landcover",
+    "stylers": [
+      {
+        "saturation": 85
+      },
+      {
+        "lightness": 100
       },
       {
         "visibility": "on"
@@ -101,7 +154,16 @@ var mapStyle = [
     "featureType": "road",
     "stylers": [
       {
-        "visibility": "simplified"
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
       }
     ]
   },
@@ -109,18 +171,17 @@ var mapStyle = [
     "featureType": "transit",
     "stylers": [
       {
-        "visibility": "simplified"
+        "visibility": "off"
       }
     ]
   }
 ]
 
-
 function initMap() {
   geocoder = new google.maps.Geocoder();
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 23.5937, lng: 78.9629},
-        zoom: 5,
+        center: {lat: 24.580944, lng: 79.148885},
+        zoom: 4.9,
         disableDefaultUI: true,
         styles: mapStyle,
     });
@@ -200,6 +261,9 @@ function openBottomNav() {
 
 function closeBottomNav() {
     document.getElementById("myNav").style.height = "0%";
+    if(markerCount!=0){
+      marker.setMap(null);
+    }
   }
 
 function changeFoc(){
@@ -679,7 +743,12 @@ document.getElementById("srhState").addEventListener('keyup', function(event) {
     event.preventDefault();
     var x = event.which || event.keyCode
     if(x==8){
-      alert(Backspacep)
+
+      if(markerCount!=0){
+        marker.setMap(null);
+      }
+      var latlng = new google.maps.LatLng(24.580944, 79.148885);
+      map.setCenter(latlng)
     }
     if (event.keyCode === 13) {
         if(allStateListed.length<2){   
@@ -696,6 +765,7 @@ document.getElementById("srhState").addEventListener('keyup', function(event) {
                   marker.setMap(null);
                 }
                 codeAddress()
+                document.getElementById("srhState").blur();
                 for(var i in myObj){
                     if(myObj[i].State == allStateListed[0].text){
                       secondPageStateName = myObj[i].State
