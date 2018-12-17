@@ -805,4 +805,58 @@ function showNewPage(){
 
 
 
+function menuItemOpen(r) {
+  switch (r) {
+    case 1:  
+    break;
+
+    case 2:
+    closeNav()
+    closeBottomNav()
+    document.getElementById("page2").style.display="none"
+    document.getElementById("page1").style.display="none"
+    document.getElementById("helpLine").style.display="block"
+
+    break;
+
+    case 3:
+    break;
+
+    case 4:
+    closeNav()
+    closeBottomNav()
+    document.getElementById("page2").style.display="none"
+    document.getElementById("page1").style.display="none"
+    document.getElementById("aboutUs").style.display="block"
+    break;
+
+    case 5:
+    closeNav()
+    closeBottomNav()
+    document.getElementById("page2").style.display="none"
+    document.getElementById("page1").style.display="none"
+    document.getElementById("contactUS").style.display="block"
+    break;
+  
+    default:
+      break;
+  }
+}
+
+
+function goBack() {
+  alert("back Back")
+}
+
+function sendMail() {
+  var link = "mailto:glanceat1@gmail.com"
+           + "?cc=kartikyadav@protonmail.com"
+           + "&subject=" + escape("Mail From "+document.getElementById('fname').value)
+           + "&body=" + escape(document.getElementById('subject').value)
+  ;
+
+  window.location.href = link;
+}
+
+
 

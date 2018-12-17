@@ -68,6 +68,7 @@ box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     width: 0;
     transition: 0.5s;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    background-image: linear-gradient(to right top, #ffe0e0, #fee7d7, #f3f0d8, #e3f9e5, #d8fffa);
 
 }
 .sidepanel a {
@@ -227,7 +228,8 @@ padding: 5% 0%;
 border-radius: 5px;
 text-align: center;
 list-style: none;
-margin: 0px 2% 2% -17%
+margin: 8px 2% 2% -17%;
+box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), 0 1px 10px rgba(0, 0, 0, 0.22);
 }
 
 #userDetails{
@@ -245,6 +247,7 @@ margin: 0px 2% 2% -17%
     border-radius: 50%;
     width: 25%;
     margin: 30px 0 15px 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), 0 1px 10px rgba(0, 0, 0, 0.22);
 }
 
 #page2{
@@ -263,8 +266,74 @@ margin: 0px 2% 2% -17%
     height: 100%;
     margin: 0;
     padding: 0;
-    
+    display: block;
 }
+
+#contactUS{
+    z-index:-1;
+    position: static;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    display: none;
+}
+
+#contactUS  h3 {text-align: center;
+    margin-bottom: 22%;
+}
+
+#helpLine{
+    z-index:-1;
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: none;
+    font-size: 12px;
+}
+
+#helpGoBack{
+    position: absolute;
+right: 10px;
+padding: 11px 14px;
+top: 5px;
+border-radius: 50%;
+background: white;
+border: none;
+}
+
+#aboutUs{
+    z-index:-1;
+    position: static;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+#helpNO {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #helpNO td, #helpNO th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #helpNO tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #helpNO tr:hover {background-color: #ddd;}
+  
+  #helpNO th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
 
 #overlay {
     position: fixed;
@@ -376,6 +445,35 @@ left: 50%;
 top: 50%;
 transform: translate(-50%, -50%);
 box-shadow: 0 0px 0px rgba(0, 0, 0, 0.25), 0 5px 4px rgba(0, 0, 0, 0.22);
+  }
+
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+ #contactUS  button{
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #contactUS  button:hover {
+    background-color: #45a049;
+  }
+  
+  .container {
+    border-radius: 5px;
+    padding: 20px;
   }
 
   
