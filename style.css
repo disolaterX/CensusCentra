@@ -220,11 +220,6 @@ html, body {
     padding-bottom: 15px;
 }
 
-#profileBack p {
-    color: #fff;
-margin: 0 0 5px 23px;
-font-size: 100%;
-}
 
 #menuItem li {
     border: 1px solid;
@@ -235,11 +230,21 @@ list-style: none;
 margin: 0px 2% 2% -17%
 }
 
-#user{
+#userDetails{
+    margin: 0% 0% 0% -5%;
+}
 
+#userDetails p {
+    color: #fff;
+    margin: 0 0 5px 23px;
+    font-size: 17px;
+    
+}
+
+#user{
     border-radius: 50%;
     width: 25%;
-    margin: 30px 0 15px 20px;
+    margin: 30px 0 15px 10px;
 }
 
 #page2{
