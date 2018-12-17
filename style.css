@@ -223,7 +223,7 @@ html, body {
 #profileBack p {
     color: #fff;
 margin: 0 0 5px 23px;
-font-size: 17px;
+font-size: 100%;
 }
 
 #menuItem li {
