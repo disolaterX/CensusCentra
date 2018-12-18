@@ -244,7 +244,7 @@ function codeAddress() {
 
 
 function openNav() {
-    document.getElementById("mySidepanel").style.width = "250px";
+    document.getElementById("mySidepanel").style.width = "70%";
     document.getElementById("srhState").style.display = "none";
     document.getElementById("myDropdown").classList.remove("show");
     document.getElementById("overlay").style.display = "block";
