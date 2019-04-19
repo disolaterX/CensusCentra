@@ -8,43 +8,6 @@ var markerCount = 0
 var marker
 
 
- var config = {
-    apiKey: "AIzaSyD6GafHcKeBBCAqY0OxaB0wQjtHSSCXATE",
-    authDomain: "wtt2-8d030.firebaseapp.com",
-    databaseURL: "https://wtt2-8d030.firebaseio.com",
-    projectId: "wtt2-8d030",
-    storageBucket: "wtt2-8d030.appspot.com",
-    messagingSenderId: "902390981190"
-  };
-  firebase.initializeApp(config);
-
-  var db = firebase.database();
-  var ref = db.ref("locationofp")
-  
-var x = document.getElementById("demo");
-
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-    var loga = position.coords.latitude;
-    var lata = position.coords.longitude;
-
-    var loct = {
-      log : loga,
-      lat : lata
-  };
-
-  ref.push(loct);
-
-
-
-
 var mapStyle = [
   {
     "stylers": [
